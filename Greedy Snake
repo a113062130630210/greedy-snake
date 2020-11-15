@@ -1,0 +1,245 @@
+#include <iostream>
+using namespace std;
+ 
+/**
+ * arr : 2D array whose size is N * N
+ * N   : specify array's size
+ * pos : array of length 2, which means the snake's start position (i, j)
+ *       pos[0] means i
+ *       pos[1] means j
+**/
+int N;
+void rampage(int** arr,int N, int* pos)
+{
+    int x=pos[0];
+    int y=pos[1];
+    int k=1;
+    while(k<=N*N-pos[0]){
+        if(k<=N*N-pos[0]){
+            for(int i=y;i<=N-1;i++){
+                arr[x][i]=k;
+                k++;
+            }
+        }
+        x++;
+        if(x>=N){
+            x=x%N;
+        }
+        if(k<=N*N-pos[0]){
+            for(int u=N-1;u>=0;u--){
+        arr[x][u]=k;
+        k++;
+        }
+        }
+ 
+        x++;
+        if(x>=N){
+            x=x%N;
+        }
+        if(k<=N*N-pos[0]){
+            for(int i=0;i<=N-1;i++){
+        arr[x][i]=k;
+        k++;
+        }
+        }
+ 
+        x++;
+        if(x>=N){
+            x=x%N;
+        }
+        if(k<=N*N-pos[0]){
+            for(int u=N-1;u>=0;u--){
+        arr[x][u]=k;
+        k++;
+        }
+        if(x>=N){
+            x=x%N;
+        }
+        }
+ 
+        x++;
+        if(x>=N){
+            x=x%N;
+        }
+        if(k<=N*N-pos[0]){
+            for(int i=0;i<=N-1;i++){
+        arr[x][i]=k;
+        k++;
+        }
+        }
+ 
+ 
+    }
+ 
+}
+ 
+/**
+ * arr : 2D array whose size is N * N
+ * N   : specify array's size
+ * pos : array of length 2, which means the snake's start position (i, j)
+ *       pos[0] means i
+ *       pos[1] means j
+**/
+bool check(int** arr,int x,int y)
+{
+    if(arr[x][y]==0||(arr[x+1][y]==0&&x+1<=N)||(arr[x-1][y]==0&&x-1>=0)||(arr[x][y+1]==0&&y+1<=N)||(arr[x][y-1]==0&&y-1>=0))
+        return false;
+    else
+        return true;
+}
+void print(int** arr)
+{
+    for(int i=0;i<5;i++)
+        {
+            for(int j=0;j<5;j++)
+                cout<<arr[i][j]<<" ";
+            cout<<endl;
+        }cout<<endl;
+}
+void ambages(int** arr,int N, int* pos)
+{
+    int x=pos[0];
+    int y=pos[1];
+    int k=1;
+    int t=1;
+    while(arr[x][y]==0||(arr[x+1][y]==0&&x+1<=N)||(arr[x-1][y]==0&&x-1>=0)||(arr[x][y+1]==0&&y+1<=N)||(arr[x][y-1]==0&&y-1>=0)){
+        while(t==1){ //down
+        //print(arr);
+        arr[x][y]=k;
+        k++;
+        x++;
+        if(x==N){
+            t=2;
+            x--;
+            k--;
+            break;
+        }if(arr[x][y]!=0){
+            x--;
+            if(check(arr,x,y))    break;   
+            y++;
+            t=2;
+            break;
+        }
+        //cout<<"test1"<<endl;
+    }
+    while(t==2){  //right
+    //print(arr);
+        arr[x][y]=k;
+        k++;
+        y++;
+        if(y==N){
+            t=3;
+            k--;
+            y--;
+            break;
+        }if(arr[x][y]!=0){
+            y--;
+            if(check(arr,x,y))    break;
+            x--;
+            t=3;
+            break;
+        }
+        //cout<<"test2"<<endl;
+    }
+    while(t==3){  //up
+    //print(arr);
+        arr[x][y]=k;
+        k++;
+        x--;
+        if(x==-1){
+            t=4;
+            k--;
+            x++;
+            break;
+        }if(arr[x][y]!=0){
+            x++;
+            if(check(arr,x,y))    break;
+            y--;
+            t=4;
+        }
+        //cout<<"test3"<<endl;
+    }
+    while(t==4){  //left
+    //print(arr);
+        arr[x][y]=k;
+        k++;
+        y--;
+        if(y==pos[1]+1){
+            t=1;
+            break;
+        }if(arr[x][y]!=0){
+            y++;
+            if(check(arr,x,y))    break;
+            x++;
+            t=1;
+            break;
+        }
+        //cout<<"test4"<<endl;
+    }
+//    while(t==1){ //down
+//        arr[x][y]=k;
+//        k++;
+//        x++;
+//        if(x==N){
+//            t=2;
+//            x--;
+//            break;
+//        }if(arr[x][y]!=0){
+//            x--;   
+//            y++;
+//            t=2;
+//            break;
+//        }
+//        //cout<<"test1"<<endl;
+//    }
+//    while(t==2){  //right
+//        arr[x][y]=k;
+//        k++;
+//        y++;
+//        if(y==N-1){
+//            t=3;
+//            break;
+//        }if(arr[x][y]!=0){
+//            y--;
+//            x--;
+//            t=3;
+//            break;
+//        }
+//        //cout<<"test2"<<endl;
+//    }
+//    break;
+    }
+    //cout<<"test5"<<endl;
+ 
+}
+ 
+int main()
+{
+    int type;
+    int pos[2];
+ 
+    cin >> N >> type >> pos[0] >> pos[1];
+ 
+    //dynamically allocate a 2D array
+    int** arr = new int* [N];
+    for (int i=0; i<N; i++) arr[i] = new int [N]();
+ 
+    if (type == 1) rampage(arr,N, pos);
+    else if (type == 2) ambages(arr, N, pos);
+ 
+    // print the matrix
+    for (int i=0; i<N; i++){
+        for (int j=0; j<N; j++){
+            cout.width(3);
+            cout << arr[i][j];
+        }
+        cout << endl;
+    }
+ 
+    //delete the 2D array
+    for (int i=0; i<N; i++){ 
+        delete [] arr[i];
+    }
+    delete [] arr;
+    return 0;
+}
