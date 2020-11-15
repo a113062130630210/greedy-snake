@@ -103,77 +103,76 @@ void ambages(int** arr,int N, int* pos)
     while(arr[x][y]==0||(arr[x+1][y]==0&&x+1<=N)||(arr[x-1][y]==0&&x-1>=0)||(arr[x][y+1]==0&&y+1<=N)||(arr[x][y-1]==0&&y-1>=0)){
         while(t==1){ //down
         //print(arr);
-        arr[x][y]=k;
-        k++;
-        x++;
-        if(x==N){
-            t=2;
-            x--;
-            k--;
-            break;
-        }if(arr[x][y]!=0){
-            x--;
-            if(check(arr,x,y))    break;   
-            y++;
-            t=2;
-            break;
-        }
-    }
-    while(t==2){  //right
+        	arr[x][y]=k;
+        	k++;
+        	x++;
+        	if(x==N){
+           		t=2;
+            	x--;
+            	k--;
+            	break;
+        	}if(arr[x][y]!=0){
+            	x--;
+            	if(check(arr,x,y))    break;   
+            	y++;
+            	t=2;
+            	break;
+        	}
+    	}
+    	while(t==2){  //right
     //print(arr);
-        arr[x][y]=k;
-        k++;
-        y++;
-        if(y==N){
-            t=3;
-            k--;
-            y--;
-            break;
-        }if(arr[x][y]!=0){
-            y--;
-            if(check(arr,x,y))    break;
-            x--;
-            t=3;
-            break;
-        }
-    }
-    while(t==3){  //up
+        	arr[x][y]=k;
+        	k++;
+       		y++;
+        	if(y==N){
+            	t=3;
+            	k--;
+            	y--;
+            	break;
+        	}if(arr[x][y]!=0){
+            	y--;
+            	if(check(arr,x,y))    break;
+            	x--;
+            	t=3;
+            	break;
+        	}
+    	}
+    	while(t==3){  //up
     //print(arr);
-        arr[x][y]=k;
-        k++;
-        x--;
-        if(x==-1){
-            t=4;
-            k--;
-            x++;
-            break;
-        }if(arr[x][y]!=0){
-            x++;
-            if(check(arr,x,y))    break;
-            y--;
-            t=4;
-        }
-    }
-    while(t==4){  //left
+        	arr[x][y]=k;
+        	k++;
+        	x--;
+        	if(x==-1){
+            	t=4;
+            	k--;
+            	x++;
+            	break;
+        	}if(arr[x][y]!=0){
+            	x++;
+            	if(check(arr,x,y))    break;
+            	y--;
+            	t=4;
+        	}
+    	}
+    	while(t==4){  //left
     //print(arr);
-        arr[x][y]=k;
-        k++;
-        y--;
-        if(y==pos[1]+1){
-            t=1;
-            break;
-        }if(arr[x][y]!=0){
-            y++;
-            if(check(arr,x,y))    break;
-            x++;
-            t=1;
-            break;
-        }
+        	arr[x][y]=k;
+        	k++;
+        	y--;
+        	if(y==pos[1]+1){
+            	t=1;
+            	break;
+        	}if(arr[x][y]!=0){
+            	y++;
+            	if(check(arr,x,y))    break;
+            	x++;
+            	t=1;
+            	break;
+        	}
+    	}
     }
-    }
- 
+  
 }
- 
 int main()
 {
     int type;
