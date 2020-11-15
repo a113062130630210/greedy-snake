@@ -27,9 +27,9 @@ void rampage(int** arr,int N, int* pos)
         }
         if(k<=N*N-pos[0]){
             for(int u=N-1;u>=0;u--){
-        arr[x][u]=k;
-        k++;
-        }
+        		arr[x][u]=k;
+        		k++;
+        	}
         }
  
         x++;
@@ -38,9 +38,9 @@ void rampage(int** arr,int N, int* pos)
         }
         if(k<=N*N-pos[0]){
             for(int i=0;i<=N-1;i++){
-        arr[x][i]=k;
-        k++;
-        }
+        		arr[x][i]=k;
+        		k++;
+        	}
         }
  
         x++;
@@ -49,23 +49,22 @@ void rampage(int** arr,int N, int* pos)
         }
         if(k<=N*N-pos[0]){
             for(int u=N-1;u>=0;u--){
-        arr[x][u]=k;
-        k++;
-        }
+        		arr[x][u]=k;
+        		k++;
+        	}
+		}
         if(x>=N){
             x=x%N;
         }
-        }
- 
         x++;
         if(x>=N){
             x=x%N;
         }
         if(k<=N*N-pos[0]){
             for(int i=0;i<=N-1;i++){
-        arr[x][i]=k;
-        k++;
-        }
+        		arr[x][i]=k;
+        		k++;
+        	}
         }
  
  
@@ -89,12 +88,11 @@ bool check(int** arr,int x,int y)
 }
 void print(int** arr)
 {
-    for(int i=0;i<5;i++)
-        {
-            for(int j=0;j<5;j++)
-                cout<<arr[i][j]<<" ";
+    for(int i=0;i<5;i++){
+        for(int j=0;j<5;j++)
+            cout<<arr[i][j]<<" ";
             cout<<endl;
-        }cout<<endl;
+    }cout<<endl;
 }
 void ambages(int** arr,int N, int* pos)
 {
@@ -120,7 +118,6 @@ void ambages(int** arr,int N, int* pos)
             t=2;
             break;
         }
-        //cout<<"test1"<<endl;
     }
     while(t==2){  //right
     //print(arr);
@@ -139,7 +136,6 @@ void ambages(int** arr,int N, int* pos)
             t=3;
             break;
         }
-        //cout<<"test2"<<endl;
     }
     while(t==3){  //up
     //print(arr);
@@ -157,7 +153,6 @@ void ambages(int** arr,int N, int* pos)
             y--;
             t=4;
         }
-        //cout<<"test3"<<endl;
     }
     while(t==4){  //left
     //print(arr);
@@ -174,42 +169,8 @@ void ambages(int** arr,int N, int* pos)
             t=1;
             break;
         }
-        //cout<<"test4"<<endl;
     }
-//    while(t==1){ //down
-//        arr[x][y]=k;
-//        k++;
-//        x++;
-//        if(x==N){
-//            t=2;
-//            x--;
-//            break;
-//        }if(arr[x][y]!=0){
-//            x--;   
-//            y++;
-//            t=2;
-//            break;
-//        }
-//        //cout<<"test1"<<endl;
-//    }
-//    while(t==2){  //right
-//        arr[x][y]=k;
-//        k++;
-//        y++;
-//        if(y==N-1){
-//            t=3;
-//            break;
-//        }if(arr[x][y]!=0){
-//            y--;
-//            x--;
-//            t=3;
-//            break;
-//        }
-//        //cout<<"test2"<<endl;
-//    }
-//    break;
     }
-    //cout<<"test5"<<endl;
  
 }
  
